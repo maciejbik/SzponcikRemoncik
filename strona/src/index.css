@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Montserrat Variable", ui-sans-serif, system-ui, sans-serif;
+
+  --color-bg: #191919;
+  --color-card: #232323;
+  --color-card2: #2b2b2b;
+  --color-line: #363636;
+  --color-cream: #efede8;
+  --color-txt: #c4c1ba;
+  --color-muted: #8a8780;
+  --color-orange: #f26b1d;
+  --color-orange-dark: #3a2214;
+  --color-amber: #ffa93a;
+
+  --animate-marquee: marquee 28s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-14px) rotate(-1deg); }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-bg text-txt font-sans antialiased;
+  }
+  ::selection {
+    @apply bg-orange text-bg;
+  }
+}
+
+@utility heading {
+  @apply font-black uppercase text-cream tracking-tight leading-[1.02];
+}
+
+@utility card {
+  @apply rounded-2xl border border-line bg-card;
+}
+
+@utility logo-glow {
+  filter: drop-shadow(0 0 70px rgb(242 107 29 / 0.35)) drop-shadow(0 12px 24px rgb(0 0 0 / 0.6));
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+input[type="range"].ba-range {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+}
+input[type="range"].ba-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 44px;
+  height: 100vh;
+  cursor: ew-resize;
+}
+input[type="range"].ba-range::-moz-range-thumb {
+  width: 44px;
+  height: 100vh;
+  border: 0;
+  background: transparent;
+  cursor: ew-resize;
+}
